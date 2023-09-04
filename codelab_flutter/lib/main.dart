@@ -6,17 +6,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-List<CameraDescription> cameras = [];
-CameraDescription? cameraDescription;
-
 void main() async {
-  try {
-    WidgetsFlutterBinding.ensureInitialized();
-    cameras = await availableCameras();
-    cameraDescription = cameras[0];
-  } on CameraException catch (e) {
-    print('Error in fetching the cameras: $e');
-  }
   runApp(const MyApp());
 }
 
@@ -78,9 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = FavoritesPage();
         break;
       case 2:
-        page = TakePictureScreen(
-          camera: cameraDescription,
-        );
+        page = Placeholder();
         break;
       default:
         throw UnimplementedError("no widget for $selectedIndex");
